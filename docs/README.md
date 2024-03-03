@@ -1,3 +1,5 @@
+# Instalacion del Modulo Incidencias para Odoo.
+
 ## Dependencias a otros modulos:
 - base
 
