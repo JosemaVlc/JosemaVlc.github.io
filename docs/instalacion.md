@@ -87,9 +87,51 @@ hero_height: is-fullwidth
     7. Instala el modulo incidencias
 
 ## Información para el buen funcionamiento.
-- Para que funcione correctamente el modulo deberemos tener en el modulo de empleados(hr) un departamento con el nombre "Tecnico" para que se puedan asociar los empleados de ese departamento a las zonas correspondientes.
+- Para que funcione correctamente el modulo, debemos tener en el modulo de empleados(hr) un departamento con el nombre "Tecnico" esto es necesario para que se puedan asociar los empleados de ese departamento a las zonas correspondientes.
 - Para que se asocie correctamente un contrato a una zona, es necesario, que el contacto asociado tenga codigo postal y pais, ya que sinó no se asociará a ninguna zona y no podrá guardar el contrato.
 
+# Información de permisos.
+- El modulo de incidencias dispone de una categoria de permisos llamada Incidencias que a su vez dispone de cuatro perfiles con diferentes tipos de permisos.
+
+    * Direccion de empresa
+        * Permisos de lectura sobre los contratos.
+        * Permisos de lectura y modificacion sobre las incidencias.
+        * Permisos de lectura y creacion sobre las anotaciones.
+        * Permisos de lectura sobre las zonas.
+        * Permisos de lectura sobre los almacenes.
+        * Permisos de lectura sobre los materiales.
+        * Permisos de lectura sobre las lineas de los albaranes de consumo.
+        * Permisos de lectura sobre los albaranes de consumo.
+
+    * Encargados de Departamento
+        * Permisos totales sobre los contratos.
+        * Permisos totales sobre las incidencias.
+        * Permisos totales sobre las anotaciones.
+        * Permisos totales sobre las zonas.
+        * Permisos totales sobre los almacenes.
+        * Permisos totales sobre los materiales.
+        * Permisos totales sobre las lineas de los albaranes de consumo.
+        * Permisos totales sobre los albaranes de consumo.
+
+    * Tecnico Integrado
+        * Permisos de lectura sobre los contratos.
+        * Permisos de lectura y modificación sobre las incidencias.
+        * Permisos de lectura y creacion sobre las anotaciones.
+        * Permisos de lectura sobre las zonas
+        * Permisos de lectura sobre almacén.
+        * Permisos de lectura y modificación sobre material.
+        * Permisos de lectura y creación sobre las lineas de los albaranes de consumo.
+        * Permisos de lectura y creación sobre los albaranes de consumo.
+
+    * Atencion al cliente y Comercial
+        * Permisos de lectura, modificación y creación sobre contratos.
+        * Permisos de lectura y modificación sobre incidencias.
+        * Permisos de lectura y creación sobre anotaciones.
+        * Permisos de lectura y modificación sobre zonas.
+        * Permisos de lectura sobre almacenes.
+        * Permisos de lectura sobre materiales.
+        * Permisos de lectura sobre lineas de albaranes de consumo.
+        * Permisos de lectura sobre los albaranes de consumo.
 
 ## URL del repositorios:
 - [Repositorio del fork de odoodock](https://github.com/JosemaVlc/odoodock.git)

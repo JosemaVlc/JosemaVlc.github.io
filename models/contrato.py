@@ -14,9 +14,9 @@ class contrato(models.Model):
     service_tv = fields.Boolean(string = 'Tv')
     service_net = fields.Boolean(string = 'Net')
 
-    zona_tecnica = fields.Char(string = 'CP Zona Tecnica', compute = '_compute_cp', required=True)
+    zona_tecnica = fields.Char(string = 'CP Zona Tecnica', compute = '_compute_cp')
     # Relacion zona [1:N] contrato
-    zona_id = fields.Many2one('incidencias.zona', 'Zona Tecnica', compute = '_compute_zona_tecnica', store = True) # Devolverá su cliente las incidencias.
+    zona_id = fields.Many2one('incidencias.zona', 'Zona Tecnica', compute = '_compute_zona_tecnica', store = True, required=True) # Devolverá su cliente las incidencias.
     
     # Relacion incidencia [N:1] contrato
     incidencia_ids = fields.One2many('incidencias.incidencia', 'contrato_id') # Devolverá todas las incidencias.

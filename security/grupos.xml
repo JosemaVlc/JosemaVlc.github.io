@@ -15,7 +15,7 @@
         </record>
 
         <record id="incidencias.grupo_comercial" model="res.groups">
-            <field name="name">Comercial de Ventas</field>
+            <field name="name">Atencion al Cliente y Comercial</field>
             <field name="category_id" ref="incidencias.categoria_instalaciones"/>
         </record>
         
