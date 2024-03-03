@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Instalacion
-permalink: /Instalacion/
+permalink: /instalacion/
 hero_height: is-fullwidth
 ---
 ## Dependencias a otros modulos:
