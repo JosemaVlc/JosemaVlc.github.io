@@ -55,7 +55,7 @@ hero_height: is-fullwidth
         '''
     6. Para comprobar que todo ha ido correctamente, acceder desde un navegador a localhost:8069, donde debe aparecer la página del selector de la base de datos.
     <p align="center">
-        <img src="./img/odoo_base_datos.png" alt="Imagen con pantalla de creacion de la base de datos">
+    <img src="./img/odoo_base_datos.png" alt="Imagen con pantalla de creacion de la base de datos">
     </p>
 
     7. Configurar los valores y crea la base de datos.
