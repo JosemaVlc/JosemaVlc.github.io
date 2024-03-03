@@ -22,7 +22,7 @@ hero_height: is-fullwidth
 - Desde cero:
     1. Es conveniente crear en local una carpeta llamada Odoo_dev o [nombre de la
         empresa]_dev.
-        '''shell
+        '''python
         mkdir odoo_dev
         '''
     2. Clonar en su interior odoodock.
@@ -60,7 +60,7 @@ hero_height: is-fullwidth
 
     7. Configurar los valores y crea la base de datos.
 - Con Odoodock ya funcionando:
-    
+
 
         
     
