@@ -9,20 +9,19 @@ class contrato(models.Model):
     _description = 'Contratos'
 
     name = fields.Char(string = 'NºContrato', readonly=1)
-    #number = fields.Integer(string = 'Zona Tecnica', compute='_compute_zona_tecnica', store=True)
     service_tlf = fields.Boolean(string = 'Tlf')
     service_tv = fields.Boolean(string = 'Tv')
     service_net = fields.Boolean(string = 'Net')
 
     zona_tecnica = fields.Char(string = 'CP Zona Tecnica', compute = '_compute_cp')
     # Relacion zona [1:N] contrato
-    zona_id = fields.Many2one('incidencias.zona', 'Zona Tecnica', compute = '_compute_zona_tecnica', store = True, required=True) # Devolverá su cliente las incidencias.
+    zona_id = fields.Many2one('incidencias.zona', 'Zona Tecnica', compute = '_compute_zona_tecnica', store = True, required=True) 
     
     # Relacion incidencia [N:1] contrato
-    incidencia_ids = fields.One2many('incidencias.incidencia', 'contrato_id') # Devolverá todas las incidencias.
+    incidencia_ids = fields.One2many('incidencias.incidencia', 'contrato_id') 
 
     # Relacion cliente [1:N] contrato
-    partner_id = fields.Many2one('res.partner', 'Cliente', required=True, domain=[('active','=',True)]) # Devolverá su cliente las incidencias.
+    partner_id = fields.Many2one('res.partner', 'Cliente', required=True, domain=[('active','=',True)])
 
     _sql_constraints = [
         ('name_uniq', 'unique(name)', 'El numero de contrato debe ser único')

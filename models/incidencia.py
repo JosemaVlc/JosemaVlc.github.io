@@ -27,7 +27,7 @@ class incidencia(models.Model):
     cliente_movil = fields.Char(string='Movil', related='contrato_id.partner_id.mobile')
     cliente_email = fields.Char(string='Email', related='contrato_id.partner_id.email')
     cliente_zona_tecnica = fields.Char(string='Zona Tecnica', related='contrato_id.zona_id.name')
-    cliente_tecnico_asociado = fields.Char(string="Tecnico Asociado", related='contrato_id.zona_id.tecnico_id.name')
+    cliente_tecnico_asociado = fields.Char(string="Tecnico Asociado", related='contrato_id.zona_id.tecnico_id.name', store=True)
 
     cliente_provincia = fields.Char(string='Provincia', compute='_compute_client_info', store=True)
 
