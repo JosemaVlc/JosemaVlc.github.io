@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="incidencias_pdf_report" model="ir.actions.report">
+        <field name="name">Informe Incidencias</field>
+        <field name="model">incidencias.incidencia</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">incidencias.report_incidencia</field>
+        <field name="binding_model_id" ref='model_incidencias_incidencia'/>
+        <field name="binding_type">report</field>
+        <field name="binding_view_types">kanban,list,form</field>
+        <field name="print_report_name">'Informe Incidencias - %s' % (object.name)</field>
+    </record>
+
+    <template id="incidencias.report_incidencia">
+        <t t-call="web.html_container">                    
+            <t t-call="web.external_layout">
+                <table style="border-collapse: collapse; width: 100%; border: 1px solid;">
+                    <tr style="background-color: LightBlue;">
+                        <th style="border: 1px solid;">Incidencia</th>
+                        <th style="border: 1px solid;">Direccion</th>
+                        <th style="border: 1px solid;">Tecnico</th>
+                        <th style="border: 1px solid;">Fecha y hora</th>
+                    </tr>
+                    <t t-foreach="docs" t-as="record">
+                        <tr style="border: 1px solid;">
+                            <td style="border: 1px solid;"><t t-esc="record.name"/></td> 
+                            <td style="border: 1px solid;"><t t-esc="record.cliente_calle"/> <t t-esc="record.cliente_ciudad"/> <t t-esc="record.cliente_provincia"/></td>
+                            <td style="border: 1px solid;"><t t-esc="record.cliente_tecnico_asociado"/></td>
+                            <td style="border: 1px solid;"><t t-esc="record.fecha_planificada"/></td>
+                        </tr>
+                    </t>
+                </table>
+            </t>
+        </t>
+    </template>
+</odoo>

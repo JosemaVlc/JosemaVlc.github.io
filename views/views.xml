@@ -1,0 +1,347 @@
+<odoo>
+  <data>  
+  <!--Vista Cliente desde contrato-->
+
+    <record model="ir.ui.view" id="incidencias.partner_form">
+      <field name="name">incidencias.partner_form</field>
+      <field name="model">res.partner</field>
+      <field name="arch" type="xml">
+        <form>
+          <group string="Informacion general">
+            <group>
+              <field name="vat" string="DNI"/>
+            </group>
+            <group>
+              <field name="name" string="Nombre Completo"/>
+            </group>
+          </group>
+          <group string="Dirección de Instalación">
+            <field name="street" string="Dirección"/>
+            <field name="city" string="Municipio"/>
+            <field name="zip" string="Codigo Postal"/>
+            <field name="state_id" string="Provincia"/>
+            <field name="country_id" string="Pais"/>
+          </group>
+          <group string="Contacto">
+            <field name="phone"/>
+            <field name="mobile"/>
+          </group>
+          <group>
+            <field name="email"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+  <!--Vista Contrato -->
+  
+    <record model="ir.ui.view" id="incidencias.contrato_tree">
+      <field name="name">incidencias.contrato</field>
+      <field name="model">incidencias.contrato</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="partner_id"/>
+          <field name="zona_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="incidencias.contrato_form">
+      <field name="name">incidencias.contrato</field>
+      <field name="model">incidencias.contrato</field>
+      <field name="arch" type="xml">
+        <form>
+          <group string="Datos Cliente">
+            <field name="name"/>
+            <field name="partner_id" context="{'form_view_ref':'incidencias.partner_form'}" string="Cliente"/>
+            <field name="zona_id"/>
+          </group>
+          <group>
+            <group>
+              <group string="Servicios Contratados">
+                <field name="service_tlf" string="Telefono" widget="boolean_toggle"/>
+                <field name="service_tv" string="Televisión" widget="boolean_toggle"/>
+                <field name="service_net" string="Internet" widget="boolean_toggle"/>
+              </group>
+            </group>
+          </group>
+        </form>
+      </field>
+    </record>
+
+  <!--Vista Zonas-->
+
+    <record model="ir.ui.view" id="incidencias.zona_window_tree">
+      <field name="name">incidencias.zona</field>
+      <field name="model">incidencias.zona</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="tecnico_id"/>
+          <field name="code"/>
+          <field name="pais"/>
+        </tree>
+      </field>
+    </record>
+
+
+  <!--Vista Incidencias-->
+
+    <record model="ir.ui.view" id="incidencias.incidencia_window_tree">
+      <field name="name">incidencias.list</field>
+      <field name="model">incidencias.incidencia</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="contrato_id"/> 
+          <field name="cliente_calle"/>
+          <field name="cliente_ciudad"/>
+          <field name="cliente_tecnico_asociado"/>
+          <field name="fecha_planificada"/>
+          <field name="fase"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="incidencias.incidencia_window_kanban">
+      <field name="name">incidencias.kanban</field>
+      <field name="model">incidencias.incidencia</field>
+      <field name="arch" type="xml">
+        <kanban default_group_by="fase" records_draggable="false">
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_global_click card">
+                <div class="card-header">
+                  <div class="text-info">
+                    <strong>
+                      Nº Incidencia <field name="name"/>
+                    </strong>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p>
+                    <strong class="text-primary">
+                      Cto. 
+                    </strong>
+                    <field name="contrato_id"/>
+                  </p>
+                  <p>
+                    <strong class="text-primary">
+                      Planificación:  
+                    </strong>
+                    <field name="fecha_planificada"/>
+                  </p>
+                  <p>
+                    <strong class="text-primary">
+                      Direccion:  
+                    </strong>
+                    <field name="cliente_calle"/>
+                    <field name="cliente_ciudad"/>
+                    <field name="cliente_provincia"/>
+                  </p>
+                  <strong class="text-primary">
+                    Zona Tecnica:  
+                  </strong>
+                    <field name="cliente_zona_tecnica"/>
+                </div>
+                <div class="card-footer">
+                  <div class="text-info">
+                    <strong>
+                      Estado: <field name="fase"/>
+                    </strong>
+                  </div>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="incidencias.incidencia_window_form">
+      <field name="name">Incidencias.form</field>
+      <field name="model">incidencias.incidencia</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+            <button name="funcion_confirmar" 
+                    string="Confirmar" 
+                    class="oe_highlight"
+                    attrs="{'invisible': [('fase', '!=', 'ENT')]}"
+                    confirm="Atención: Si confirmas la incidencia entrará a la planificación del tecnico ¿Deseas Continuar?"
+                    type="object"/>
+            <button name="funcion_confirmar" 
+                    string="Solucionar" 
+                    class="oe_highlight"
+                    attrs="{'invisible': [('fase', '!=', 'PRO')]}"
+                    confirm="Atención: Si solucionas la incidencia saldrá de la planificación del tecnico ¿Deseas Continuar?"
+                    type="object"/>
+            <field name="fase" widget="statusbar" statusbar_visible="ENT,PRO,SOL"/>          
+          </header>
+          <group string="Información básica">
+            <group>
+              <field name="name"/>
+              <field name="contrato_id"
+                     attrs="{'readonly': [('fase', '!=', 'ENT')]}"/>
+            </group>
+            <group>
+              <field name="fecha_entrada"/>   
+              <field name="fecha_planificada"
+                     attrs="{'readonly': [('fase', '!=', 'ENT')]}"/>  
+              <field name="fecha_solucion" attrs="{'invisible': [('fase', '!=', 'SOL')]}"/>      
+            </group>            
+          </group>
+          <group>
+            <group string="Información del Cliente">
+              <field name="cliente_nif"/>
+              <field name="cliente_nombre"/>
+              <field name="cliente_telefono"/>
+              <field name="cliente_movil"/>
+              <field name="cliente_email"/>
+              <field name="cliente_calle"/>
+              <field name="cliente_ciudad"/>
+              <field name="cliente_provincia"/>
+            </group>
+            <group string="Información del Tecnico">
+              <field name="cliente_zona_tecnica"/>
+              <field name="cliente_tecnico_asociado"/>
+              <field name="albaran_id"/>
+            </group>
+          </group>
+          <notebook>
+            <page string="Incidencia">
+              <group string="Servicios afectados:" col='10'>  
+                <group style="text-align:right">                
+                  <field name="service_tlf"/>
+                </group>
+                <group style="text-align:right">
+                  <field name="service_tv"/>
+                </group>
+                <group style="text-align:right">
+                  <field name="service_net"/>
+                </group>
+              </group>
+              <group string="Info:">
+                <field name="incidence_text"
+                     attrs="{'readonly': [('fase', '!=', 'ENT')]}"/>
+                <field name="solution_text" attrs="{'invisible': [('fase', '==', 'ENT')], 'readonly': [('fase', '!=', 'PRO')], }"/>
+              </group>
+            </page>
+            <page string="Anotaciones">
+              <field name="annotations_ids">
+                <tree editable='top'>
+                  <field name="date"/>
+                  <field name="user"/>
+                  <field name="name"/>
+                </tree>
+              </field>
+            </page>
+          </notebook>
+        </form>
+      </field>
+    </record>
+
+    <!--Vista Albaranes-->
+
+    <record model="ir.ui.view" id="incidencias.albaran_window_form">
+      <field name="name">incidencias.albaran</field>
+      <field name="model">incidencias.albaran</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="date"/>
+            <field name="warehouse_id"/> 
+            <field name="incidencia_id"/>
+            <field name="lineas_ids">
+              <tree editable='top'>
+                <field name="code"/>
+                <field name="warehouse_associated_id" invisible="1"/>
+                <field name="material_id"/>
+                <field name="unit_price"/>
+                <field name="quantity"/>
+                <field name="price"/>              
+              </tree>
+            </field>
+            <field name="total_price"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="incidencias.action_contrato_form">
+      <field name="name">Contratos</field>
+      <field name="res_model">incidencias.contrato</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="incidencias.action_window_incidencia">
+      <field name="name">Incidencias</field>
+      <field name="res_model">incidencias.incidencia</field>
+      <field name="view_mode">kanban,form,tree</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="incidencias.action_window_zona">
+      <field name="name">Zona Tecnica</field>
+      <field name="res_model">incidencias.zona</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="incidencias.action_window_almacen">
+      <field name="name">Almacen</field>
+      <field name="res_model">incidencias.almacen</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="incidencias.action_window_albaran">
+      <field name="name">Albaranes</field>
+      <field name="res_model">incidencias.albaran</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="incidencias.action_server">
+      <field name="name">incidencias server</field>
+      <field name="model_id" ref="model_incidencias_incidencias"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    <menuitem name="Módulo Incidencias" id="incidencias.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Menu" id="incidencias.menu_1" parent="incidencias.menu_root"/>
+    <!-- <menuitem name="Menu 2" id="incidencias.menu_2" parent="incidencias.menu_root"/> -->
+
+    <!-- actions -->
+
+    <menuitem name="Incidencias" id="incidencias.menu_1_incidencia" parent="incidencias.menu_1"
+              action="incidencias.action_window_incidencia"/>
+
+    <menuitem name="Zonas" id="incidencias.menu_1_zona" parent="incidencias.menu_1"
+              action="incidencias.action_window_zona"/>
+
+    <menuitem name="Contratos" id="incidencias.menu_1_contrato" parent="incidencias.menu_1"
+              action="incidencias.action_contrato_form"/>
+
+    <menuitem name="Almacenes" id="incidencias.menu_1_almacen" parent="incidencias.menu_1"
+              action="incidencias.action_window_almacen"/>
+
+    <menuitem name="Albaranes" id="incidencias.menu_1_albaran" parent="incidencias.menu_1"
+              action="incidencias.action_window_albaran"/>
+
+    <!-- <menuitem name="Server to list" id="incidencias" parent="incidencias.menu_2"
+              action="incidencias.action_server"/> -->
+  </data>
+</odoo>
