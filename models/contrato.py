@@ -15,7 +15,7 @@ class contrato(models.Model):
 
     zona_tecnica = fields.Char(string = 'CP Zona Tecnica', compute = '_compute_cp')
     # Relacion zona [1:N] contrato
-    zona_id = fields.Many2one('incidencias.zona', 'Zona Tecnica', compute = '_compute_zona_tecnica', store = True, required=True) 
+    zona_id = fields.Many2one('incidencias.zona', 'Zona Tecnica', compute = '_compute_zona_tecnica', store = True) 
     
     # Relacion incidencia [N:1] contrato
     incidencia_ids = fields.One2many('incidencias.incidencia', 'contrato_id') 

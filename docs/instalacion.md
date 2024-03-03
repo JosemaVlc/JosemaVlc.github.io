@@ -88,7 +88,7 @@ hero_height: is-fullwidth
 
 ## Información para el buen funcionamiento.
 - Para que funcione correctamente el modulo, debemos tener en el modulo de empleados(hr) un departamento con el nombre "Tecnico" esto es necesario para que se puedan asociar los empleados de ese departamento a las zonas correspondientes.
-- Para que se asocie correctamente un contrato a una zona, es necesario, que el contacto asociado tenga codigo postal y pais, ya que sinó no se asociará a ninguna zona y no podrá guardar el contrato.
+- Para que se asocie correctamente un contrato a una zona, es necesario, que el contacto asociado tenga codigo postal y pais, ya que sinó no se asociará a ninguna zona.
 
 # Información de permisos.
 - El modulo de incidencias dispone de una categoria de permisos llamada Incidencias que a su vez dispone de cuatro perfiles con diferentes tipos de permisos.
