@@ -21,6 +21,7 @@ hero_height: is-fullwidth
 ## Preparación del sistema:
 <details>
     <summary>Desde cero</summary>
+    ```markdown
     1. Es conveniente crear en local una carpeta llamada Odoo_dev o [nombre de la
         empresa]_dev.
         ```shell
@@ -55,9 +56,7 @@ hero_height: is-fullwidth
         docker ps
         ```
     6. Para comprobar que todo ha ido correctamente, acceder desde un navegador a localhost:8069, donde debe aparecer la página del selector de la base de datos.
-    <p align="center">
-    <img src="./img/odoo_base_datos.jpg" alt="Imagen con pantalla de creacion de la base de datos">
-    </p>
+    ![Imagen con pantalla de creacion de la base de datos](./img/odoo_base_datos.jpg)
 
     7. Configurar los valores y crea la base de datos.
 
@@ -70,9 +69,11 @@ hero_height: is-fullwidth
         cd /mnt/extra-addons
         git clone https://github.com/JosemaVlc/incidencias.git
         ```
+    ```
 </details>
 <details>
     <summary>Con Odoodock ya funcionando</summary>
+    ```markdown
     1. Arranca los servicios.
     2. Entra en el servicio web.
         ```shell
@@ -94,6 +95,7 @@ hero_height: is-fullwidth
     4. Logueate en localhost y activa modo desarrollador
     5. Recuerda tener instalado los modulos contactos y empleados, si no es así instalalos
     6. Instala el modulo incidencias
+    ```
 </details>
 
 ## URL del repositorios:
