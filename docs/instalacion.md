@@ -83,8 +83,8 @@ hero_height: is-fullwidth
         git clone https://github.com/JosemaVlc/odoodock.git
         ```
     5. Logueate en localhost y activa modo desarrollador
-    5. Recuerda tener instalado los modulos contactos y empleados, si no es así instalalos
-    6. Instala el modulo incidencias
+    6. Recuerda tener instalado los modulos contactos y empleados, si no es así instalalos
+    7. Instala el modulo incidencias
 
 ## URL del repositorios:
 - [Repositorio del fork de odoodock](https://github.com/JosemaVlc/odoodock.git)
