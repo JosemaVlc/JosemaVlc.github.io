@@ -55,11 +55,21 @@ hero_height: is-fullwidth
         '''
     6. Para comprobar que todo ha ido correctamente, acceder desde un navegador a localhost:8069, donde debe aparecer la página del selector de la base de datos.
     <p align="center">
-    <img src="./img/odoo_base_datos.png" alt="Imagen con pantalla de creacion de la base de datos">
+    <img src="./img/odoo_base_datos.jpg" alt="Imagen con pantalla de creacion de la base de datos">
     </p>
 
     7. Configurar los valores y crea la base de datos.
+
 - Con Odoodock ya funcionando:
+    1. Arranca los servicios
+    2. Entra en el servicio web
+    3. Instala geopy:
+        ```shell
+        pip3 install geopy
+        ```
+    4. Logueate y activa modo desarrollador
+    5. Recuerda tener instalado los modulos contactos y empleados, si no es así instalalos
+    6. Instala el modulo incidencias
 
 
         
