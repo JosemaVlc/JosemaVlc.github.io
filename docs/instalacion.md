@@ -19,7 +19,7 @@ hero_height: is-fullwidth
 - Geopy
 
 ## Preparación del sistema:
-- Desde cero
+- Desde cero.(Si tienes instalado un odoodock lee el siguiente punto.)
     1. Es conveniente crear en local una carpeta llamada Odoo_dev o [nombre de la
         empresa]_dev.
         ```shell
@@ -67,7 +67,7 @@ hero_height: is-fullwidth
         cd /mnt/extra-addons
         git clone https://github.com/JosemaVlc/incidencias.git
         ```
-- Utilizando un odoodock ya instalado.
+- Utilizando un odoodock ya instalado.(Si tienes no tienes odoodock instalado haz la instalación desde cero.)
     1. Arranca los servicios.
     2. Entra en el servicio web.
         ```shell
@@ -83,8 +83,13 @@ hero_height: is-fullwidth
         git clone https://github.com/JosemaVlc/odoodock.git
         ```
     5. Logueate en localhost y activa modo desarrollador
-    6. Recuerda tener instalado los modulos contactos y empleados, si no es así instalalos
+    6. Recuerda tener instalado los modulos contactos y empleados, si no es así instalalos.
     7. Instala el modulo incidencias
+
+## Información para el buen funcionamiento.
+- Para que funcione correctamente el modulo deberemos tener en el modulo de empleados(hr) un departamento con el nombre "Tecnico" para que se puedan asociar los empleados de ese departamento a las zonas correspondientes.
+- Para que se asocie correctamente un contrato a una zona, es necesario, que el contacto asociado tenga codigo postal y pais, ya que sinó no se asociará a ninguna zona y no podrá guardar el contrato.
+
 
 ## URL del repositorios:
 - [Repositorio del fork de odoodock](https://github.com/JosemaVlc/odoodock.git)

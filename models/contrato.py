@@ -14,7 +14,7 @@ class contrato(models.Model):
     service_tv = fields.Boolean(string = 'Tv')
     service_net = fields.Boolean(string = 'Net')
 
-    zona_tecnica = fields.Char(string = 'CP Zona Tecnica', compute = '_compute_cp')
+    zona_tecnica = fields.Char(string = 'CP Zona Tecnica', compute = '_compute_cp', required=True)
     # Relacion zona [1:N] contrato
     zona_id = fields.Many2one('incidencias.zona', 'Zona Tecnica', compute = '_compute_zona_tecnica', store = True) # Devolverá su cliente las incidencias.
     
@@ -22,7 +22,7 @@ class contrato(models.Model):
     incidencia_ids = fields.One2many('incidencias.incidencia', 'contrato_id') # Devolverá todas las incidencias.
 
     # Relacion cliente [1:N] contrato
-    partner_id = fields.Many2one('res.partner', 'Cliente', domain=[('active','=',True)]) # Devolverá su cliente las incidencias.
+    partner_id = fields.Many2one('res.partner', 'Cliente', required=True, domain=[('active','=',True)]) # Devolverá su cliente las incidencias.
 
     _sql_constraints = [
         ('name_uniq', 'unique(name)', 'El numero de contrato debe ser único')
