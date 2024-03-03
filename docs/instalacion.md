@@ -1,9 +1,7 @@
 ---
 layout: page
 title: Instalacion
-subtitle: Info General
-menubar: diagramas_flujo_menu
-show_sidebar: false
+permalink: /Instalacion/
 hero_height: is-fullwidth
 ---
 ## Dependencias a otros modulos:
@@ -20,7 +18,6 @@ hero_height: is-fullwidth
 
 ## Instalación paso a paso
 - Preparación del sistema:
-    
 
 
 ## URL del repositorios:
