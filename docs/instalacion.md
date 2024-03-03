@@ -19,9 +19,7 @@ hero_height: is-fullwidth
 - Geopy
 
 ## Preparación del sistema:
-<details>
-    <summary>Desde cero</summary>
-    ```markdown
+- Desde cero
     1. Es conveniente crear en local una carpeta llamada Odoo_dev o [nombre de la
         empresa]_dev.
         ```shell
@@ -64,16 +62,12 @@ hero_height: is-fullwidth
         ```shell
         docker exec -it odoodock-web-1 bash
         ```
-    9. Clona el modulo de incidencias.
+    9. Clona el modulo de incidencias en la carpeta extra-addons.
         ```shell
         cd /mnt/extra-addons
         git clone https://github.com/JosemaVlc/incidencias.git
         ```
-    ```
-</details>
-<details>
-    <summary>Con Odoodock ya funcionando</summary>
-    ```markdown
+- Utilizando un odoodock ya instalado.
     1. Arranca los servicios.
     2. Entra en el servicio web.
         ```shell
@@ -83,20 +77,14 @@ hero_height: is-fullwidth
         ```shell
         pip3 install geopy
         ```
-    4. Descarga el modulo incidencias.
+    4. Localiza tu carpeta extra-addons, y una vez dentro, clona el modulo incidencias
         ```shell
-        pip3 install geopy
-        ```
-    5. Localiza tu carpeta extra-addons, y una vez dentro, clona el modulo incidencias
-        ```shell
+        cd /mnt/extra-addons
         git clone https://github.com/JosemaVlc/odoodock.git
         ```
-
-    4. Logueate en localhost y activa modo desarrollador
+    5. Logueate en localhost y activa modo desarrollador
     5. Recuerda tener instalado los modulos contactos y empleados, si no es así instalalos
     6. Instala el modulo incidencias
-    ```
-</details>
 
 ## URL del repositorios:
 - [Repositorio del fork de odoodock](https://github.com/JosemaVlc/odoodock.git)
